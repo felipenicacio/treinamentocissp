@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1630">
+  <meta name="description" content="Estude os 1.071 flashcards originais do CISSP com pergunta, resposta e revisão por domínio.">
+  <title>CISSP Flashcards — Felipe Nicácio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230b1630'/%3E%3Cpath d='M16 17h32v30H16z' fill='none' stroke='%235cdbc4' stroke-width='4'/%3E%3Cpath d='M23 28h18M23 36h13' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#081226;color:#edf5ff}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -20%,#1c3861 0,#0b1934 45%,#081226 80%)}
+    button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #66dfca;outline-offset:3px}
+    .shell{max-width:1180px;margin:auto;padding:30px 28px 42px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:36px}
+    .brand{display:flex;align-items:center;gap:14px}.mark{height:43px;width:43px;border:2px solid #64ddc9;border-radius:12px;display:grid;place-items:center;color:#64ddc9;font-size:21px;font-weight:800}
+    h1{font-size:1.15rem;letter-spacing:.02em;margin:0;font-weight:760}.sub{color:#9fb2ce;margin:3px 0 0;font-size:.84rem}
+    header a{color:#b8eae2;text-decoration:none;font-size:.9rem}header a:hover{text-decoration:underline}
+    main{max-width:890px;margin:0 auto}
+    .toolbar{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+    .toolbar label{display:grid;gap:8px;color:#aabdd9;font-size:.87rem;font-weight:600}
+    select{background:#152845;color:#f4faff;border:1px solid #405778;border-radius:12px;padding:11px 40px 11px 13px;min-width:218px}
+    .toolbar-actions{display:flex;gap:10px;align-items:center}
+    .secondary{background:#142743;color:#e4f2ff;border:1px solid #405778;border-radius:12px;padding:11px 16px;font-weight:650}
+    .secondary:hover{background:#1d385a}
+    .meta{display:flex;justify-content:space-between;gap:14px;color:#9eb3ce;font-size:.89rem;margin:0 0 10px}
+    .meter{height:5px;background:#24405d;border-radius:8px;overflow:hidden;margin-bottom:20px}
+    .meter span{display:block;height:100%;width:0;background:#66dfca;transition:width .24s ease}
+    .flip-shell{perspective:1300px}
+    .card{display:block;position:relative;width:100%;min-height:390px;border:0;border-radius:22px;background:transparent;color:inherit;text-align:left;padding:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+    .card.flipped{transform:rotateY(180deg)}
+    .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid #49617e;border-radius:22px;background:linear-gradient(145deg,#223a58,#162a47 75%);box-shadow:0 24px 65px rgba(0,0,0,.22);padding:35px 44px;display:flex;flex-direction:column}
+    .face.back{transform:rotateY(180deg);background:linear-gradient(150deg,#183c49,#163547 72%);border-color:#4d998f}
+    .eyebrow{display:flex;gap:12px;align-items:center;color:#86e5d4;font-size:.81rem;font-weight:770;letter-spacing:.08em;text-transform:uppercase}
+    .number{color:#adbfda}.body{font-size:clamp(1.5rem,3.1vw,2.1rem);line-height:1.38;letter-spacing:-.018em;font-weight:580;margin:auto 0;max-width:760px;overflow-wrap:anywhere}
+    .back .body{font-size:clamp(1.23rem,2.45vw,1.72rem);font-weight:480;line-height:1.52}
+    .hint{color:#b9c9df;font-size:.87rem;margin-top:auto}.back .hint{color:#abd5ce}
+    .actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+    .nav{display:flex;gap:10px}.nav button,.assess button{border-radius:12px;padding:13px 19px;font-weight:700}
+    .nav button{background:#172d4a;border:1px solid #405a79;color:#eaf2ff}.nav button:hover:not(:disabled){background:#234369}
+    button:disabled{opacity:.45;cursor:not-allowed}
+    .assess{display:flex;gap:10px}.assess button{border:1px solid #527478;background:#1e3a4c;color:#e7f6f4}.assess button:hover:not(:disabled){background:#285260}
+    .assess .known{background:#58d6be;border-color:#58d6be;color:#062525}.assess .known:hover:not(:disabled){background:#7de8d4}
+    .footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#91a6c4;font-size:.8rem;margin:34px auto 0;max-width:890px;line-height:1.5}
+    .footer a{color:#b8eae2}.kbd{border:1px solid #59708b;border-radius:5px;padding:1px 5px;font-family:inherit}
+    @media(max-width:640px){.shell{padding:18px 16px 30px}header{margin-bottom:25px;align-items:flex-start}header a{font-size:.8rem;text-align:right}.toolbar{align-items:stretch}.toolbar label,select{width:100%}.toolbar-actions{width:100%}.toolbar-actions button{flex:1}.card{min-height:430px}.face{padding:25px 24px}.actions{flex-direction:column-reverse;align-items:stretch}.nav,.assess{display:flex;width:100%}.nav button,.assess button{flex:1;padding:13px 10px}.footer{margin-top:24px}}
+    @media(prefers-reduced-motion:reduce){.card,.meter span{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header><div class="brand"><div class="mark" aria-hidden="true">C</div><div><h1>CISSP Flashcards</h1><p class="sub">Felipe Nicácio · 1.071 cartões originais</p></div></div><a href="https://app.notion.com/p/8fe7a227b9af433f939b24ebd7d0933c" target="_blank" rel="noopener noreferrer">Abrir base no Notion ↗</a></header>
+    <main>
+      <div class="toolbar"><label for="domain">Domínio de estudo<select id="domain"><option value="all">Todos os domínios</option><option value="D1">D1 · Security and Risk Management</option><option value="D2">D2 · Asset Security</option><option value="D3">D3 · Security Architecture and Engineering</option><option value="D4">D4 · Communication and Network Security</option><option value="D5">D5 · Identity and Access Management</option><option value="D6">D6 · Security Assessment and Testing</option><option value="D7">D7 · Security Operations</option><option value="D8">D8 · Software Development Security</option></select></label><div class="toolbar-actions"><button id="shuffle" type="button" class="secondary">Embaralhar</button><button id="pending" type="button" class="secondary" aria-pressed="false">Revisar pendentes</button></div></div>
+      <div class="meta"><span id="counter" aria-live="polite">Cartão 1</span><span id="known-count">0 dominados</span></div><div class="meter"><span id="progress"></span></div>
+      <div class="flip-shell"><button type="button" class="card" id="card" aria-label="Mostrar resposta"><span class="face front" aria-hidden="false"><span class="eyebrow"><span id="front-domain"></span><span class="number" id="front-position"></span></span><span class="body" id="question"></span><span class="hint">Clique para revelar a resposta</span></span><span class="face back" aria-hidden="true"><span class="eyebrow">Resposta <span class="number" id="back-topic"></span></span><span class="body" id="answer"></span><span class="hint">Clique para voltar à pergunta</span></span></button></div>
+      <div class="actions"><div class="nav"><button id="prev" type="button">← Anterior</button><button id="next" type="button">Próximo →</button></div><div class="assess"><button id="again" type="button">Revisar depois</button><button id="known" type="button" class="known">Já sei</button></div></div>
+    </main>
+    <div class="footer"><span>Progresso salvo somente neste navegador. Setas navegam; <span class="kbd">Espaço</span> revela a resposta.</span><span>Versão dos cartões: 23 set 2026. Mudanças no Notion exigem atualização desta interface.</span></div>
+  </div>
+  <script src="./cards.js"></script>
+  <script>
+    (() => {
+      const all = window.FLASHCARDS || [];
+      const $ = id => document.getElementById(id);
+      const key = 'cissp-flashcards-known-v1';
+      let known = new Set();
+      try { known = new Set(JSON.parse(localStorage.getItem(key) || '[]')); } catch {}
+      let filtered = all.slice(), index = 0, flipped = false, pendingOnly = false;
+      const save = () => { try { localStorage.setItem(key, JSON.stringify([...known])); } catch {} };
+      const build = (keepPosition) => {
+        const domain = $('domain').value;
+        filtered = all.filter(c => (domain === 'all' || c.domain === domain) && (!pendingOnly || !known.has(c.position)));
+        const retained = filtered.findIndex(c => c.position === keepPosition);
+        index = retained >= 0 ? retained : Math.min(index, Math.max(filtered.length - 1, 0));
+        render();
+      };
+      const render = () => {
+        const c = filtered[index]; flipped = false; $('card').classList.remove('flipped');
+        $('card').setAttribute('aria-label','Mostrar resposta');
+        document.querySelector('.front').setAttribute('aria-hidden','false'); document.querySelector('.back').setAttribute('aria-hidden','true');
+        $('known-count').textContent = known.size + ' dominados de ' + all.length;
+        $('counter').textContent = c ? 'Cartão ' + (index + 1) + ' de ' + filtered.length : 'Nenhum cartão pendente';
+        $('progress').style.width = c ? ((index + 1) / filtered.length * 100) + '%' : '0%';
+        $('front-domain').textContent = c?.domain || ''; $('front-position').textContent = c ? '· posição ' + c.position : '';
+        $('question').textContent = c?.question || 'Todos os cartões deste filtro foram marcados como dominados.';
+        $('answer').textContent = c?.answer || ''; $('back-topic').textContent = c?.topic ? '· ' + c.topic : '';
+        $('prev').disabled = !c || index === 0; $('next').disabled = !c || index === filtered.length - 1;
+        $('card').disabled = !c; $('known').disabled = !c; $('again').disabled = !c;
+        $('known').textContent = c && known.has(c.position) ? 'Marcar para revisar' : 'Já sei';
+      };
+      const flip = () => { if (!filtered.length) return; flipped = !flipped; $('card').classList.toggle('flipped',flipped); $('card').setAttribute('aria-label',flipped?'Mostrar pergunta':'Mostrar resposta'); document.querySelector('.front').setAttribute('aria-hidden',String(flipped)); document.querySelector('.back').setAttribute('aria-hidden',String(!flipped)); };
+      $('card').addEventListener('click',flip);
+      $('prev').addEventListener('click',()=>{ if(index>0){index--;render()} });
+      $('next').addEventListener('click',()=>{ if(index<filtered.length-1){index++;render()} });
+      $('domain').addEventListener('change',()=>{index=0;build()});
+      $('pending').addEventListener('click',()=>{pendingOnly=!pendingOnly;$('pending').setAttribute('aria-pressed',String(pendingOnly));$('pending').textContent=pendingOnly?'Mostrar todos':'Revisar pendentes';index=0;build()});
+      $('shuffle').addEventListener('click',()=>{for(let i=filtered.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[filtered[i],filtered[j]]=[filtered[j],filtered[i]]}index=0;render()});
+      $('known').addEventListener('click',()=>{const c=filtered[index];if(!c)return;known.has(c.position)?known.delete(c.position):known.add(c.position);save();if(pendingOnly)build();else{render();if(index<filtered.length-1){index++;render()}}});
+      $('again').addEventListener('click',()=>{const c=filtered[index];if(!c)return;known.delete(c.position);save();if(index<filtered.length-1){index++;render()}else render()});
+      document.addEventListener('keydown',e=>{if(e.target.closest('select,button') && e.target!==$('card'))return;if(e.key==='ArrowRight'&&index<filtered.length-1){index++;render()}else if(e.key==='ArrowLeft'&&index>0){index--;render()}else if(e.code==='Space'&&e.target!==$('card')){e.preventDefault();flip()}});
+      if (document.modelContext?.registerTool) {
+        const context = document.modelContext;
+        const schema = {type:'object',properties:{},additionalProperties:false};
+        Promise.resolve(context.registerTool({name:'read_current_flashcard',title:'Ler cartão atual',description:'Retorna a pergunta do cartão atualmente exibido.',inputSchema:schema,annotations:{readOnlyHint:true},execute(){const c=filtered[index];return c?{position:c.position,domain:c.domain,question:c.question,answerVisible:flipped}:{empty:true}}})).catch(()=>{});
+        Promise.resolve(context.registerTool({name:'reveal_flashcard_answer',title:'Revelar resposta',description:'Vira o cartão atual para mostrar a resposta.',inputSchema:schema,annotations:{readOnlyHint:false},execute(){const c=filtered[index];if(!c)throw Error('Não há cartão neste filtro.');if(!flipped)flip();return{position:c.position,answer:c.answer}}})).catch(()=>{});
+        Promise.resolve(context.registerTool({name:'record_flashcard_recall',title:'Registrar revisão',description:'Marca o cartão atual como dominado ou pendente no progresso local do navegador.',inputSchema:{type:'object',properties:{known:{type:'boolean'}},required:['known'],additionalProperties:false},annotations:{readOnlyHint:false},execute(input){if(typeof input?.known!=='boolean')throw Error('known deve ser booleano.');const c=filtered[index];if(!c)throw Error('Não há cartão neste filtro.');input.known?known.add(c.position):known.delete(c.position);save();if(pendingOnly)build();else render();return{position:c.position,known:input.known}}})).catch(()=>{});
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
