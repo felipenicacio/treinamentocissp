@@ -2,15 +2,15 @@
 
 Interface de estudo com 1.071 cartões originais, organizados pelos oito domínios do CISSP. Clique no cartão para revelar a resposta; filtre por domínio, embaralhe e marque cartões dominados ou pendentes.
 
-## Executar
+## Publicar no GitHub Pages
 
-Abra `index.html` em um navegador. Os dados estão em `cards.js`; a aplicação não requer servidor nem dependências externas.
+O repositório é público e os arquivos `index.html` e `cards.js` estão na raiz da branch `main`. Em **Settings → Pages → Build and deployment**, selecione **Deploy from a branch**, branch **main**, pasta **/(root)** e clique em **Save**. Após a publicação, o endereço esperado é https://felipenicacio.github.io/treinamentocissp/.
 
-## Publicação no GitHub
+Os cartões em `cards.js` ficarão acessíveis a qualquer pessoa na internet. O site não exige login. Não adicione dados privados ou credenciais a este repositório.
 
-O login com Google citado por Felipe é a forma de entrar na conta do GitHub; não é um mecanismo de autenticação desta aplicação. Use um repositório **privado** para guardar o código e os 1.071 cartões. Para manter os cartões privados na internet, publique os arquivos por um serviço que aplique autenticação no servidor antes de entregar `index.html` e `cards.js`, como Cloudflare Pages protegido pelo Cloudflare Access. Configure a política de acesso para a conta autorizada e valide que uma sessão anônima não consegue obter nenhum dos dois arquivos.
+## Executar localmente
 
-O GitHub Pages, por si só, entrega arquivos estáticos e não restringe o acesso aos cartões. Uma tela de login implementada somente em JavaScript também não protege `cards.js`. Não ative GitHub Pages neste repositório enquanto os cartões precisarem permanecer privados.
+Abra `index.html` em um navegador. A aplicação não requer servidor nem dependências externas.
 
 ## Dados e progresso
 
